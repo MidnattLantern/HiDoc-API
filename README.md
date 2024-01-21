@@ -4,6 +4,8 @@ HIdoc-API is a Django REST Framework ("DRF") Application Programming Interface (
 
 Most features will be explained with the question of "why?" since that question invite the best explainations.
 
+The setup followed a step by step guide created by Code Institute. Source: https://docs.google.com/document/d/1LCLxWhmW_4VTE4GXsnHgmPUwSPKNT4KyMxSH8agbVqU/edit#heading=h.mpopj7v69qqn
+
 
 Django:
 ---
@@ -59,6 +61,10 @@ In terminal:
 
 Apps:
 ---
+- To create an app, run in terminal:
+`python3 manage.py startapp (app_name)`
+- HiDoc API created these apps:
+"art_acc" (artists account)
 
 
 Artits account:
@@ -71,3 +77,22 @@ Run server:
 To test the app, run this in the terminal:
 `python3 manage.py runserver`
 During development, it's neccessary to add an adress to allowed hosts inside settings
+
+
+Django signals:
+---
+- Signals can notify actions.
+- In any models.py, import:
+`from django.db.models.signals import (signal_name)`
+- In the admin.py, import:
+`form .models import (ModelName)`
+- The structure of the block will vary.
+- Migrate
+
+
+Dependencies
+---
+- To skip the long list of installed dependencies, each dependency are frozed.
+- In terminal:
+`pip3 freeze > requirements.txt`
+- To retrieve the requirements, in terminal:

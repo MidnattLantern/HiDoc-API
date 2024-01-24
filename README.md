@@ -2,18 +2,20 @@ HiDoc API was created from a preset model provided by Code Institute: https://gi
 
 HIdoc-API is a Django REST Framework ("DRF") Application Programming Interface ("API").
 
-Most features will be explained with the question of "why?" since that question invite the best explainations.
-
 The setup followed a step by step guide created by Code Institute. Source: https://docs.google.com/document/d/1LCLxWhmW_4VTE4GXsnHgmPUwSPKNT4KyMxSH8agbVqU/edit#heading=h.mpopj7v69qqn
 
 
-Django:
+Django and Rest:
 ---
 In terminal:
 `pip3 install 'django<4'`
 Please ignore the notice message from the terminal that ask you to update.
 - Why?
 django<4 install a long term supported version of Django that is recomended over the newer version.
+
+In terminal:
+`pip3 install djangorestframework`
+- Add to installed apps list
 
 
 Images:
@@ -32,6 +34,22 @@ In terminal:
 Cloudinary alone serve to store images and videos, it does not provide serivce to update and proccess them.
 
 The settings are: CLOUDINARY_STORAGE, MEDIA_URL, and DEFAULT_FILE_STORAGE
+
+
+views.py:
+---
+views.py import APIView and Response, which makes API visible.
+
+
+urls.py:
+---
+urls.py import path,
+For optimal maintainability, each component are sliced into many smaller pieces, the main urls.py inside art_acc folder connect the pieces. The main urls.py import `include` which allow it to connect these smaller pieces. This is useful in case a component need to exist but shouldn't be visible by the visitor.
+
+
+serializers.py
+---
+Serializers convert data between JSON and Python
 
 
 env.py:
@@ -69,7 +87,9 @@ Apps:
 
 Artits account:
 ---
-The model for artist account follow a similar structure to Code Institute's Moments tutorial model for profiles.
+- The model for artist account follow a similar structure to Code Institute's Moments tutorial model for profiles.
+- Models use import of User, which enable the API to percieve individuals, i.e differenciate user-A from user-B.
+- Models use import of Signals, which is a part of making it possible to register new users from the front-end.
 
 
 Run server:

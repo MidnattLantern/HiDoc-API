@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class ArtAccount(models.Model):
+    # id = BigAuto
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

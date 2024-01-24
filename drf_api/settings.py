@@ -42,12 +42,13 @@ SECRET_KEY = 'django-insecure-50lazhzh3*=p1j4=#z9$*nis8(h^jd*5mrkj@7dm)zj0f*q=rl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu107.gitpod.io', 'http://127.0.0.1:8000',]
+ALLOWED_HOSTS = ['localhost', '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu107.gitpod.io', '127.0.0.1',]
 
 
 """ Added apps:
 cloudinary_storage
 cloudinary
+rest_framework
 
 art_acc
 """
@@ -61,8 +62,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'art_acc',
+    'rest_framework',
 
+    'art_acc',
 ]
 
 MIDDLEWARE = [

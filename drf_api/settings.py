@@ -51,6 +51,7 @@ cloudinary
 rest_framework
 
 art_acc
+project
 """
 
 INSTALLED_APPS = [
@@ -65,6 +66,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'art_acc',
+    'project',
 ]
 
 MIDDLEWARE = [

@@ -7,12 +7,13 @@ from .serializers import ArtAccountSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
 
 
-# plural account
+# plural accounts
 class ArtAccountList(APIView):
     def get(self, request):
         artaccounts = ArtAccount.objects.all()
         serializer = ArtAccountSerializer(
-            artaccounts, many=True, context={'request': request})
+            artaccounts, many=True, context={'request': request}
+        )
         return Response(serializer.data)
 
 
@@ -32,13 +33,15 @@ class ArtAccountDetail(APIView):
     def get(self, request, pk):
         artaccount = self.get_object(pk)
         serializer = ArtAccountSerializer(
-            artaccount, context={'request': request})
+            artaccount, context={'request': request}
+        )
         return Response(serializer.data)
 
     def put(self, request, pk):
         artaccount = self.get_object(pk)
         serializer = ArtAccountSerializer(
-            artaccount, data=request.data, context={'request': request})
+            artaccount, data=request.data, context={'request': request}
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

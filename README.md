@@ -94,11 +94,19 @@ Apps:
 "art_acc" (artists account)
 
 
-Artits account:
+Artits account app:
 ---
+- The "art_acc" model is responsible for authentication with ownership, or authority to CRUD.
 - The model for artist account follow a similar structure to Code Institute's Moments tutorial model for profiles.
-- Models use import of User, which enable the API to percieve individuals, i.e differenciate user-A from user-B.
-- Models use import of Signals, which is a part of making it possible to register new users from the front-end.
+- Models use import of `User`, which enable the API to percieve individuals, i.e differenciate user-A from user-B.
+- Models use import of `Signals`, which is a part of making it possible to register new users from the front-end.
+
+
+Project app:
+---
+- The "project" model hold information about aany user's project(s).
+- The model for project follow a similar structure to Code Institute's Moments tutorial model for post.
+- The agile approach only include a feature poster and description about the project. This is because the training reference don't include the more advancded features from the HiDoc user stories, and there's no certanity that they could be experimented before the deadline.
 
 
 Run server:

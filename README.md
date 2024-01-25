@@ -55,6 +55,12 @@ serializers.py
 Serializers convert data between JSON and Python
 
 
+permissions.py
+---
+Stored inside drf_api, this file prevent non-owners from editing other's informaiton.
+permissions.py import `permissions`, to make sure only the owner can make edits to their properties.
+
+
 env.py:
 ---
 The environment file (env.py) is only available to the developmer(s). The env.py file access sensitive enviroments, such as Cloudinary.

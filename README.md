@@ -39,6 +39,7 @@ The settings are: CLOUDINARY_STORAGE, MEDIA_URL, and DEFAULT_FILE_STORAGE
 views.py:
 ---
 views.py import APIView and Response, which makes API visible.
+views.py import Http404, to serve the purpose of perceiving anything non-existing.
 
 
 urls.py:

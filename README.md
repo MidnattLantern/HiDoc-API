@@ -109,6 +109,12 @@ Project app:
 - The agile approach only include a feature poster and description about the project. This is because the training reference don't include the more advancded features from the HiDoc user stories, and there's no certanity that they could be experimented before the deadline.
 
 
+Comment app:
+---
+- The "usr_comm" app remain unused in the front-end HiDoc for the moment. The app was developed for traning/ experimental purposes. However, being able to comment is such an expected feature in the modern day, this feature may or may not be implimented in the future.
+- Comment is built on a custom model. This decision is made on preference.
+
+
 Run server:
 ---
 To test the app, run this in the terminal:

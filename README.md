@@ -133,3 +133,8 @@ Dependencies
 - In terminal:
 `pip3 freeze > requirements.txt`
 - To retrieve the requirements, in terminal:
+
+
+Testing
+---
+- manual testing performed inside project > tests.py

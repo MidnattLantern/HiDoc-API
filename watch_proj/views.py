@@ -38,7 +38,7 @@ class WatchProjectList(APIView):
 
 # singular watch projects
 class WatchProjectDetail(APIView):
-    serializer_classe = WatchProjectSerializer
+    serializer_classes = WatchProjectSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = WatchProject.objects.all()
 

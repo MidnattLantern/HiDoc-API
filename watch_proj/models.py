@@ -11,7 +11,7 @@ class WatchProject(models.Model):
         User, on_delete=models.CASCADE
     )
     project = models.ForeignKey(
-        Project, on_delete=models.CASCADE
+        Project, related_name='watching_project', on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(
         auto_now_add=True

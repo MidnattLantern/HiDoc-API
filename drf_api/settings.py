@@ -54,6 +54,7 @@ art_acc
 project
 usr_comm
 watch_proj
+watch_art
 """
 
 INSTALLED_APPS = [
@@ -71,6 +72,7 @@ INSTALLED_APPS = [
     'project',
     'usr_comm',
     'watch_proj',
+    'watch_art',
 ]
 
 MIDDLEWARE = [

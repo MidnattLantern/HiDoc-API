@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('project.urls')),
     path('', include('usr_comm.urls')),
     path('', include('watch_proj.urls')),
+    path('', include('watch_art.urls')),
 ]

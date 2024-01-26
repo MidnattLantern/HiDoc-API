@@ -3,6 +3,9 @@ from .models import UserComment
 
 
 class UserCommentSerializer(serializers.ModelSerializer):
+    """
+    Obligatory docstring
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     account_id = serializers.ReadOnlyField(source='owner.profile.id')

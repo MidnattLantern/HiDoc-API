@@ -53,6 +53,7 @@ rest_framework
 art_acc
 project
 usr_comm
+watch_proj
 """
 
 INSTALLED_APPS = [
@@ -68,7 +69,8 @@ INSTALLED_APPS = [
 
     'art_acc',
     'project',
-    'usr_comm'
+    'usr_comm',
+    'watch_proj',
 ]
 
 MIDDLEWARE = [

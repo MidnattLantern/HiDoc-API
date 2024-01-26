@@ -36,6 +36,15 @@ Cloudinary alone serve to store images and videos, it does not provide serivce t
 The settings are: CLOUDINARY_STORAGE, MEDIA_URL, and DEFAULT_FILE_STORAGE
 
 
+Agile:
+---
+- HiDoc was developed in reference to a training project by Code Institute: "Moments". That reference play a big role in the agile approach to HiDoc.
+- To ensure that all the features were confident during development, some features are referenced and follow a similar structure to Moments. It's worth pointing out that althought there are many parallels, HiDoc didn't copy-paste its reference.
+
+
+Apps
+===
+
 views.py:
 ---
 views.py import APIView and Response, which makes API visible.
@@ -104,7 +113,7 @@ Artits account app:
 
 Project app:
 ---
-- The "project" model hold information about aany user's project(s).
+- The "project" model hold information about any user's project(s).
 - The model for project follow a similar structure to Code Institute's Moments tutorial model for post.
 - The agile approach only include a feature poster and description about the project. This is because the training reference don't include the more advancded features from the HiDoc user stories, and there's no certanity that they could be experimented before the deadline.
 
@@ -113,6 +122,19 @@ Comment app:
 ---
 - The "usr_comm" app remain unused in the front-end HiDoc for the moment. The app was developed for traning/ experimental purposes. However, being able to comment is such an expected feature in the modern day, this feature may or may not be implimented in the future.
 - Comment is built on a custom model. This decision is made on preference.
+
+
+Watch project:
+---
+- The "watch_proj" app is very similar to the conventional like feature in modern apps. The purpose is different from a like however, instead of expressing positive affirmation to the project owner, it serves as a bookmark like in modern e-books.
+- When the user click Watch Project, that project will be listed inside their watch view, allowing the user to easily and find projects they think are interesting to stay updated for.
+- There is a counter that show how many users are watching the project.
+- Watching is a yes or no state. The serializer.py import `IntegrityError`, that's being used to prevent 'double-watching'. 
+
+
+Watch artist:
+---
+- The "watch_art" app is HiDoc's equivalent to follow profile. It's treated the same way as Watch Project, but for artist accounts instead of projects.
 
 
 Run server:

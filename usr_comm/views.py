@@ -22,7 +22,6 @@ class UserCommentList(APIView):
         )
         return Response(serializer.data)
     
-
     def post(self, request):
         serializer = UserCommentSerializer(
             data=request.data, context={'request': request}

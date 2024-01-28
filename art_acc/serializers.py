@@ -7,6 +7,10 @@ class ArtAccountSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     watching_art_id = serializers.SerializerMethodField()
+    # test
+    projects_count = serializers.ReadOnlyField()
+    watchers_art_count = serializers.ReadOnlyField()
+    watching_art_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -29,4 +33,5 @@ class ArtAccountSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at',
             'name', 'content', 'image', 'is_owner',
             'watching_art_id',
+            'projects_count', 'watchers_art_count', 'watching_art_count',
         ]

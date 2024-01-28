@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
@@ -10,7 +11,17 @@ from drf_api.permissions import IsOwnerOrReadOnly
 # plural accounts
 class ArtAccountList(APIView):
     def get(self, request):
-        artaccounts = ArtAccount.objects.all()
+        artaccounts = ArtAccount.objects.annotate(
+            projects_count=Count(
+                'owner__project', disctinct=True
+            ),
+            watchers_art_count=Count(
+                'owner__account_watched', disctinct=True
+            ),
+            watching_art_count=Count(
+                'owner__watching_artist', disctinct=True
+            ),
+        ).order_by('-created_at')
         serializer = ArtAccountSerializer(
             artaccounts, many=True, context={'request': request}
         )

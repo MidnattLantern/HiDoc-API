@@ -33,6 +33,7 @@ class ArtAccountDetail(APIView):
     serializer_class = ArtAccountSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
+
     def get_object(self, pk):
         try:
             artaccount = ArtAccount.objects.get(pk=pk)
@@ -42,7 +43,9 @@ class ArtAccountDetail(APIView):
             raise Http404
     
     def get(self, request, pk):
+        # unsolved: cannot show watching counter 
         artaccount = self.get_object(pk)
+
         serializer = ArtAccountSerializer(
             artaccount, context={'request': request}
         )

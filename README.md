@@ -166,3 +166,8 @@ Dependencies
 Testing
 ---
 - manual testing performed inside project > tests.py
+
+
+Unsolved:
+---
+- The individual view for artist accounts cannot show a counter for projects, watching, or being watch.

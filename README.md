@@ -133,6 +133,11 @@ Deployment (IDE)
 `pip freeze --local > requirements.txt`
 - form here, move on to Deployment (Heroku) from step 5.
 
+Whitenoise:
+---
+During deployment for Heroku, the API may look differently. Although its function isn't lost, it may be nice to have the API look nice when you visit. Whitenoise attempt to fix that.
+whitnoise `pip3 install whitenoise`
+
 
 Agile:
 ===

@@ -72,8 +72,30 @@ Token
 ´pip3 install djangorestframework-simplejwt´
 
 
-Agile:
+Deployment (ElephantSQL)
 ---
+HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:
+- On dashboard, click on "Create new instance" at the top right corner,
+- The name given was "HiDoc-API", the plan for now remains as "tiny turtle", then click "Select Region",
+- The region set for HiDoc is Stockholm. Click "Review",
+- CLick "Create Instance",
+- On the dashboard, click the name for HiDoc-API,
+- There's a button that copy the URL link.
+
+
+Deployment (Heroku)
+---
+HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
+- On the dashboard, click "New", then "Create new app" at the top right corner,
+- give-it-a-name-like-this, then click "create app",
+- Inside the app, click "settings" at the nav-bar, then "reveal confog vars",
+- Add the key "DATABASE_URL", and the value is what PostgrSQL copied from the copy URL step earlier. The value should begin with "postgres:/",
+- 
+
+
+
+Agile:
+===
 - HiDoc was developed in reference to a training project by Code Institute: "Moments". That reference play a big role in the agile approach to HiDoc.
 - To ensure that all the features were confident during development, some features are referenced and follow a similar structure to Moments. It's worth pointing out that althought there are many parallels, HiDoc didn't copy-paste its reference.
 - Some features, such as search projects or artists was left behind in the first phase. HiDoc is functional without those features, and had to be comprimised due to time constrain.

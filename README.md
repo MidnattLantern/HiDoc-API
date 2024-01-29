@@ -267,6 +267,11 @@ Testing
 - manual testing performed inside project > tests.py
 
 
+Struggles
+---
+- In case of "Bad Request 400" error in Heroku deployment, the Heroku link is probably not properly added to the allowed host list. Deployment with Debug = True will reveal precisely how the allowed host link should be written.
+
+
 Unsolved:
 ---
 - The individual view for artist accounts cannot show a counter for projects, watching, or being watch.

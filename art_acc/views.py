@@ -1,6 +1,6 @@
 from django.db.models import Count
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import ArtAccount
@@ -25,6 +25,15 @@ class ArtAccountList(APIView):
         serializer = ArtAccountSerializer(
             artaccounts, many=True, context={'request': request}
         )
+        # unsolved: filter options don't appear
+        filter_backends = [
+            filters.OrderingFilter
+        ]
+        ordering_fields = [
+            'projects_count',
+            'watchers_art_count',
+            'watching_art_count,'
+        ]
         return Response(serializer.data)
 
 
@@ -45,7 +54,6 @@ class ArtAccountDetail(APIView):
     def get(self, request, pk):
         # unsolved: cannot show watching counter 
         artaccount = self.get_object(pk)
-
         serializer = ArtAccountSerializer(
             artaccount, context={'request': request}
         )

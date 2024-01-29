@@ -9,6 +9,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     art_acc_id = serializers.ReadOnlyField(source='owner.profile.id')
     art_acc_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     watch_proj_id = serializers.SerializerMethodField()
+    # test
+    watch_proj_count = serializers.ReadOnlyField()
 
     # limit to image size
     def validate_image(self, value):
@@ -46,5 +48,5 @@ class ProjectSerializer(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at',
             'project_title', 'project_description',
             'feature_poster', 'art_acc_id', 'art_acc_image',
-            'is_owner', 'watch_proj_id'
+            'is_owner', 'watch_proj_id', 'watch_proj_count',
         ]

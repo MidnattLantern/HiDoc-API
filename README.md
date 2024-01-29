@@ -97,13 +97,18 @@ Deployment (Heroku)
 - Inside the app, click "settings" at the nav-bar, then "reveal confog vars",
 - Add the key "DATABASE_URL", and the value is what PostgrSQL copied from the copy URL step earlier. The value should begin with "postgres:/",
 - From here, move on to Deployment (IDE) from step 3.
-5. Following steps should be taken after steps taken in IDE.
+6. Following steps should be taken after steps taken in IDE.
 - Ad these to the config vars:
 Key: SECRET_KEY, Value: anything,
 Key: CLOUDINARY_URL, Value: the cloudinary url used to host images,
 Key: DISABLE_COLLECTSTATIC, Value: 1,
 - Click deploy in the navbar, Github as deployment method, search for the repository name, then deploy.
 - HiDoc is being deployed manually.
+- Since this API will be used for a seperate front-end app, inside config vars, add this:
+Key: "ALLOWED_HOST", value: the link to the Heroku app.
+- Then replace the heroku app in allowed host with:
+`os.environ.get('ALLOWED_HOST'),` This shouldn't result in a 400 error.
+- 
 
 
 
@@ -131,7 +136,7 @@ Deployment (IDE)
 `'DEV' in os.environ`
 - Reminder: freeze, in terminal:
 `pip freeze --local > requirements.txt`
-- form here, move on to Deployment (Heroku) from step 5.
+- form here, move on to Deployment (Heroku) from step 6.
 
 Whitenoise:
 ---

@@ -59,13 +59,12 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+#DEBUG = 'DEV' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu107.gitpod.io',
-    '127.0.0.1',
-    'https://hidoc-api-80e680483d64.herokuapp.com/'
+    'https://hidoc-api-80e680483d64.herokuapp.com/',
     ]
 
 

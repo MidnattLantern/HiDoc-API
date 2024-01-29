@@ -74,24 +74,56 @@ Token
 
 Deployment (ElephantSQL)
 ---
-HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:
+1. HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:
 - On dashboard, click on "Create new instance" at the top right corner,
 - The name given was "HiDoc-API", the plan for now remains as "tiny turtle", then click "Select Region",
 - The region set for HiDoc is Stockholm. Click "Review",
 - CLick "Create Instance",
 - On the dashboard, click the name for HiDoc-API,
 - There's a button that copy the URL link.
+- From here, move on to Deployment (Heroku) from step 2.
+4. Following steps should be taken after steps taken in Heroku and the IDE.
+- In the database, click "browser",
+- Click "Table queries", scroll down to "auth_user" (may have info within parantheses),
+- Click execute,
+- From here, move on to Deployment (IDE) from step 5.
 
 
 Deployment (Heroku)
 ---
-HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
+2. HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
 - On the dashboard, click "New", then "Create new app" at the top right corner,
 - give-it-a-name-like-this, then click "create app",
 - Inside the app, click "settings" at the nav-bar, then "reveal confog vars",
 - Add the key "DATABASE_URL", and the value is what PostgrSQL copied from the copy URL step earlier. The value should begin with "postgres:/",
-- 
+- From here, move on to Deployment (IDE) from step 3.
 
+
+
+Deployment (IDE)
+---
+3. These are steps taken in the IDE:
+- In terminal:
+` pip3 install dj_database_url==0.5.0 psycopg2`
+- Inside settings.py, underneath `import os`, import:
+`import dj_database_url`
+- There was a block that needed to be replaced, please find `ref-1: updating database` in settings.py to see what that replacement looks like. This block will connect to ElephantSQL.
+- From here, move on to Deployment (ElephantSQL) step 4.
+5. Following steps should be taken after steps taken in ElephantSQL.
+- In terminal, run:
+`pip3 install gunicorn django-cors-headers`
+- Add a profcile, so that Heroku can read it.
+- Add the URL for Heroku to the list of allowed hosts inside settings.py,
+- Add corsheaders to installed apps,
+- Add to the top of the middleware list:
+`'corsheaders.middleware.CorsMiddleware',`,
+- Added client origin block, please see `ref-2: client origin` in settings.py, this help with communication between backend and frontend. And cookies.
+- add this underneath the other JWT_AUTH:
+`JWT_AUTH_SAMESITE = 'None'`,
+- Change DEBUG to:
+`'DEV' in os.environ`
+- Reminder: freeze, in terminal:
+`pip freeze --local > requirements.txt`
 
 
 Agile:

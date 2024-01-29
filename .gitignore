@@ -8,4 +8,5 @@ node_modules/
 .github/
 cloudinary_python.txt
 DS_Store
-test_users.txt
+test_users_local.txt
+test_users_postgresql.txt

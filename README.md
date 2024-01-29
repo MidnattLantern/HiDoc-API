@@ -36,10 +36,47 @@ Cloudinary alone serve to store images and videos, it does not provide serivce t
 The settings are: CLOUDINARY_STORAGE, MEDIA_URL, and DEFAULT_FILE_STORAGE
 
 
+JWT token:
+---
+- The JTW token make HiDoc API more secure.
+- In terminal:
+`pip3 install dj-rest-auth==2.1.9`
+- In settings.py, add in the installed apps:
+`est_framework.authtoken`
+`dj_rest_aut`
+- in urls.py, add the link:
+`path('dj-rest-auth/', include('dj_rest_auth.urls'))`
+- migrate
+
+
+Allauth:
+---
+- Django all-auth enable the user from the front-end to register.
+- In terminal:
+`pip3 install 'dj-rest-auth[with_social]'`
+- add these apps:
+django.contrib.sites
+allauth
+allauth.account
+allauth.socialaccount
+dj_rest_auth.registration
+- beneath installed apps, add:
+`SITE_ID = 1`
+- inside urls.py, add:
+`path('dj-rest-auth/registration', include('dj_rest_auth.registration.urls')),`
+
+
+Token
+---
+- In terminal:
+´pip3 install djangorestframework-simplejwt´
+
+
 Agile:
 ---
 - HiDoc was developed in reference to a training project by Code Institute: "Moments". That reference play a big role in the agile approach to HiDoc.
 - To ensure that all the features were confident during development, some features are referenced and follow a similar structure to Moments. It's worth pointing out that althought there are many parallels, HiDoc didn't copy-paste its reference.
+- Some features, such as search projects or artists was left behind in the first phase. HiDoc is functional without those features, and had to be comprimised due to time constrain.
 
 
 Apps

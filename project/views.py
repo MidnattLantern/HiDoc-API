@@ -22,9 +22,14 @@ class ProjectList(APIView):
                 'watching_project', distinct=True
             ),
         ).order_by('-created_at')
-        # unsolved: filter options don't appear
+        # unsolved: filter oprions and search field don't appear
         filter_backends = [
-            filters.OrderingFilter
+            filters.OrderingFilter,
+            filters.SearchFilter,
+        ]
+        search_fields = [
+            'owner__art_account',
+            'project_title',
         ]
         ordering_fields = [
             'watch_project_count',

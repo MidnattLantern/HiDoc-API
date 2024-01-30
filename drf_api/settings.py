@@ -65,6 +65,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     os.environ.get('ALLOWED_HOST'),
+    '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu107.gitpod.io',
     ]
 
 

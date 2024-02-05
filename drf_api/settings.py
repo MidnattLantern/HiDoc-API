@@ -65,7 +65,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     'localhost',
     os.environ.get('ALLOWED_HOST'),
-    '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu107.gitpod.io',
+    '8000-midnattlantern-hidocapi-fbww7tkscl8.ws-eu108.gitpod.io',
     ]
 
 
@@ -81,6 +81,7 @@ allauth.account
 allauth.socialaccount
 dj_rest_auth.registration
 corsheaders
+django-filters
 
 art_acc
 project
@@ -99,7 +100,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
-#    'django_filters',
+    'django_filters',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django.contrib.sites',

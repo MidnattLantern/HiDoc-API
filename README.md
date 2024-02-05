@@ -72,6 +72,13 @@ Token
 ´pip3 install djangorestframework-simplejwt´
 
 
+Filter
+---
+The filter will be used in the front-end when browsing trough user projects and watch list.
+- In terminal:
+`pip3 install django-filter` (without an S at the end)
+- Add `django-filters` to installed apps (with an S at the end)
+
 Deployment (ElephantSQL)
 ---
 1. HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:

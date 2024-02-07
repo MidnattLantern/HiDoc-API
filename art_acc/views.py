@@ -64,7 +64,7 @@ class ArtAccountDetail(generics.RetrieveAPIView):
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer
 
-"""
+
     def get_object(self, pk):
         try:
             art_account = ArtAccount.objects.get(pk=pk)
@@ -90,4 +90,3 @@ class ArtAccountDetail(generics.RetrieveAPIView):
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
-"""

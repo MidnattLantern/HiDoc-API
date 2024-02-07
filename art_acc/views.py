@@ -36,14 +36,13 @@ class ArtAccountList(generics.ListAPIView):
     ]
 
     def get(self, request):
-        artists = ArtAccount.objects.all()
+        art_account = ArtAccount.objects.all()
         serializer = ArtAccountSerializer(
-            artists, many=True, context={'request': request}
+            art_account, many=True, context={'request': request}
         )
         return Response(serializer.data)
 
 
-# singular account
 class ArtAccountDetail(generics.RetrieveAPIView):
     """
     Singular art account
@@ -63,3 +62,17 @@ class ArtAccountDetail(generics.RetrieveAPIView):
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer
 
+    def get_object(self, pk):
+        try:
+            art_account = ArtAccount.objects.get(pk=pk)
+            self.check_object_permissions(self.request, art_account)
+            return art_account
+        except ArtAccount.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        art_account = self.get_object(pk)
+        serializer = ArtAccountSerializer(
+            art_account, context={'request': request}
+        )
+        return Response(serializer.data)

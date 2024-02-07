@@ -46,6 +46,26 @@ class ProjectList(generics.ListCreateAPIView):
         'updated_at',
     ]
 
+    def get(self, request):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(
+            projects, many=True, context={'request': request}
+        )
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = ProjectSerializer(
+            data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED
+        )
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 

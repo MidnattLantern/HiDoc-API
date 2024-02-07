@@ -9,10 +9,9 @@ from .serializers import ProjectSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
 
 
-# plural projects
 class ProjectList(generics.ListCreateAPIView):
     """
-    Obligatory Docstring
+    Plural projects
     """
     serializer_class = ProjectSerializer
     permission_classes = [
@@ -71,10 +70,9 @@ class ProjectList(generics.ListCreateAPIView):
 
 
 
-# singular project
 class ProjectDetail(generics.RetrieveAPIView):
     """
-    Obligatory docstring
+    Singular project
     """
     serializer_class = ProjectSerializer
     permission_classes = [IsOwnerOrReadOnly]

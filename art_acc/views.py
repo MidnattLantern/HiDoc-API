@@ -8,8 +8,10 @@ from .serializers import ArtAccountSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
 
 
-# plural accounts
 class ArtAccountList(generics.ListAPIView):
+    """
+    Plural Accounts
+    """
     queryset = ArtAccount.objects.annotate(
         projects_count=Count(
             'owner__project', disctinct=True
@@ -33,9 +35,19 @@ class ArtAccountList(generics.ListAPIView):
             'owner__account_watched__created_at',
     ]
 
+    def get(self, request):
+        artists = ArtAccount.objects.all()
+        serializer = ArtAccountSerializer(
+            artists, many=True, context={'request': request}
+        )
+        return Response(serializer.data)
+
 
 # singular account
 class ArtAccountDetail(generics.RetrieveAPIView):
+    """
+    Singular art account
+    """
     #serializer_class = ArtAccountSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = ArtAccount.objects.annotate(
@@ -50,3 +62,4 @@ class ArtAccountDetail(generics.RetrieveAPIView):
         ),        
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer
+

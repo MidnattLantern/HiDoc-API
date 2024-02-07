@@ -31,7 +31,7 @@ class ProjectList(generics.ListCreateAPIView):
         # potential future feature: watching artists
 #        'owner__watched__owner__artaccount',
         # projects appearing in watch project list
-        'watching_project__owner__artaccount',
+#        'watching_project__owner__artaccount',
         # user projects
         'owner__artaccount',
     ]

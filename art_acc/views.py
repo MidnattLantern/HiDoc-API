@@ -35,14 +35,13 @@ class ArtAccountList(generics.ListAPIView):
             'owner__account_watched__created_at',
     ]
 
-"""
     def get(self, request):
         art_account = ArtAccount.objects.all()
         serializer = ArtAccountSerializer(
             art_account, many=True, context={'request': request}
         )
         return Response(serializer.data)
-"""
+
 
 
 class ArtAccountDetail(generics.RetrieveAPIView):

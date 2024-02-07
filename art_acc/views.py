@@ -76,3 +76,14 @@ class ArtAccountDetail(generics.RetrieveAPIView):
             art_account, context={'request': request}
         )
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        art_account = self.get_object(pk)
+        serializer = ArtAccountSerializer(
+            art_account, data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )

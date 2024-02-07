@@ -35,12 +35,14 @@ class ArtAccountList(generics.ListAPIView):
             'owner__account_watched__created_at',
     ]
 
+"""
     def get(self, request):
         art_account = ArtAccount.objects.all()
         serializer = ArtAccountSerializer(
             art_account, many=True, context={'request': request}
         )
         return Response(serializer.data)
+"""
 
 
 class ArtAccountDetail(generics.RetrieveAPIView):
@@ -62,6 +64,7 @@ class ArtAccountDetail(generics.RetrieveAPIView):
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer
 
+"""
     def get_object(self, pk):
         try:
             art_account = ArtAccount.objects.get(pk=pk)
@@ -87,3 +90,4 @@ class ArtAccountDetail(generics.RetrieveAPIView):
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
+"""

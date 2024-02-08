@@ -45,7 +45,7 @@ class ProjectList(generics.ListCreateAPIView):
         'updated_at',
     ]
 
-"""
+
     def get(self, request):
         projects = Project.objects.all()
         serializer = ProjectSerializer(
@@ -65,7 +65,7 @@ class ProjectList(generics.ListCreateAPIView):
         return Response(
             serializer.data, status=status.HTTP_201_CREATED
         )
-"""
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 

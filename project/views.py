@@ -83,7 +83,7 @@ class ProjectDetail(generics.RetrieveAPIView):
         ),
     ).order_by('-created_at')
 
-"""
+
     def get_object(self, pk):
         try:
             project = Project.objects.get(pk=pk)
@@ -117,4 +117,3 @@ class ProjectDetail(generics.RetrieveAPIView):
         return Response(
             status=status.HTTP_204_NO_CONTENT
         )
-"""

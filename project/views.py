@@ -33,7 +33,7 @@ class ProjectList(generics.ListCreateAPIView):
         # projects appearing in watch project list
         'watching_project__owner__artaccount',
         # user projects
-        'owner__artaccount',
+#        'owner__artaccount',
     ]
     search_fields = [
         'owner__username',
@@ -45,7 +45,7 @@ class ProjectList(generics.ListCreateAPIView):
         'updated_at',
     ]
 
-
+"""
     def get(self, request):
         projects = Project.objects.all()
         serializer = ProjectSerializer(
@@ -68,7 +68,7 @@ class ProjectList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
+"""
 
 class ProjectDetail(generics.RetrieveAPIView):
     """
@@ -82,7 +82,7 @@ class ProjectDetail(generics.RetrieveAPIView):
         ),
     ).order_by('-created_at')
 
-
+"""
     def get_object(self, pk):
         try:
             project = Project.objects.get(pk=pk)
@@ -116,3 +116,4 @@ class ProjectDetail(generics.RetrieveAPIView):
         return Response(
             status=status.HTTP_204_NO_CONTENT
         )
+"""

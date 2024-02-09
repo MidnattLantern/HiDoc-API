@@ -49,4 +49,5 @@ class ProjectSerializer(serializers.ModelSerializer):
             'project_title', 'project_description',
             'feature_poster', 'art_acc_id', 'art_acc_image',
             'is_owner', 'watch_proj_id', 'watch_proj_count',
+            'deployed_link',
         ]

@@ -7,8 +7,10 @@ from watch_proj.serializers import WatchProjectSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
 
 
-#plural watch projects
 class WatchProjectList(APIView):
+    """
+    plural watch projects
+    """
     serializer_class = WatchProjectSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
@@ -36,8 +38,10 @@ class WatchProjectList(APIView):
         )
     
 
-# singular watch projects
 class WatchProjectDetail(APIView):
+    """
+    singular watch project
+    """
     serializer_classes = WatchProjectSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = WatchProject.objects.all()

@@ -31,7 +31,7 @@ class ProjectList(generics.ListCreateAPIView):
         # projects appearing in watch project list
         'watching_project__owner__artaccount',
         # user projects
-#        'owner__artaccount',
+        'owner__artaccount',
     ]
     search_fields = [
 #        'owner__username',

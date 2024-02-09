@@ -234,10 +234,10 @@ Project app:
 - The agile approach only include a feature poster and description about the project. This is because the training reference don't include the more advancded features from the HiDoc user stories, and there's no certanity that they could be experimented before the deadline.
 
 
-Comment app:
+Comment app (unused):
 ---
+Potential future feature.
 - The "usr_comm" app remain unused in the front-end HiDoc for the moment. The app was developed for traning/ experimental purposes. However, being able to comment is such an expected feature in the modern day, this feature may or may not be implimented in the future.
-- Comment is built on a custom model. This decision is made on preference.
 
 
 Watch project:
@@ -248,9 +248,10 @@ Watch project:
 - Watching is a yes or no state. The serializer.py import `IntegrityError`, that's being used to prevent 'double-watching'. 
 
 
-Watch artist:
+Watch artist (unused):
 ---
-- The "watch_art" app is HiDoc's equivalent to follow profile. It's treated the same way as Watch Project, but for artist accounts instead of projects.
+Potential future feature
+- The "watch_art" app is HiDoc's equivalent to follow profile. This app remain unused in the front-end HiDoc for the moment. The app was developed for training/ experimental purposes. 
 
 
 Run server:
@@ -279,8 +280,10 @@ Dependencies
 - To retrieve the requirements, in terminal:
 
 
-Testing
+(Manual) Testing
 ---
+In terminal, run:
+`python3 manage.py test`
 - manual testing performed inside project > tests.py
 
 

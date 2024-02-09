@@ -19,7 +19,7 @@ class WatchProjectList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
     
 
-class WatchProjectDetail(generics.RetrieveAPIView):
+class WatchProjectDetail(generics.RetrieveDestroyAPIView):
     """
     singular watch project
     """

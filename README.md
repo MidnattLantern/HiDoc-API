@@ -300,3 +300,6 @@ Unsolved:
 Credits:
 ---
 - If you have access to Code Institute's (CI) advanced front-end drf_api project, you may spot similarities between this HiDoc's API and CI's API. However, CI's API project is a training project, and have been referenced for research and training purposes in development of HiDoc-API.
+- Some icons are borrowed from Fond Awesome
+- Some icons and graphical designs were designed by Alma Isaksson
+- Developed by Alma Isaksson

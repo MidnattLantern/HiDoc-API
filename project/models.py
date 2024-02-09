@@ -17,13 +17,14 @@ class Project(models.Model):
         auto_now=True
         )
     project_title = models.CharField(
-        max_length=50, blank=True
+        max_length=50, blank=True,
+        default='untitled',
         )
     project_description = models.TextField(
         blank=True
         )
     feature_poster = models.ImageField(
-        upload_to='images/', default='../default_post_y8afhe,',
+        upload_to='images/', default='../default_post_y8afhe',
         blank=True,
         )
     deployed_link = models.URLField(

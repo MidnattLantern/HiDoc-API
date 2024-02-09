@@ -47,7 +47,7 @@ class ProjectList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class ProjectDetail(generics.RetrieveAPIView):
+class ProjectDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Singular project
     """

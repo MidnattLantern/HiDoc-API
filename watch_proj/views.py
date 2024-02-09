@@ -14,6 +14,9 @@ class WatchProjectList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = WatchProjectSerializer
     queryset = WatchProject.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
     
 
 class WatchProjectDetail(generics.RetrieveAPIView):

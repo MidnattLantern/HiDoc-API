@@ -41,4 +41,5 @@ class DocumentationDetailSerializer(DocumentationSerializer):
     """
     serializer for documentation detail view
     """
+#    project = serializers.ReadOnlyField(source="project.id")
     project = serializers.ReadOnlyField(source="project.id")

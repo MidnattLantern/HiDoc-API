@@ -252,11 +252,17 @@ Watch project:
 - There is a counter that show how many users are watching the project.
 - Watching is a yes or no state. The serializer.py import `IntegrityError`, that's being used to prevent 'double-watching'. 
 
-
 Watch artist (unused):
 ---
 Potential future feature
 - The "watch_art" app is HiDoc's equivalent to follow profile. This app remain unused in the front-end HiDoc for the moment. The app was developed for training/ experimental purposes. 
+
+Documentation
+---
+- Owner of a project can add content to, by intention of HiDoc, document their proccess.
+- Documentation is related to Project.
+- Technically, any artist COULD document another artist's project. This, obviously is restricted in the front-end, where only the owner of a project can acccess this feature.
+
 
 
 Run server:

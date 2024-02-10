@@ -6,7 +6,7 @@ from project.models import Project
 class Documentation(models.Model):
     """
     id automatic by Big Auto.
-    Documentation connected to a post.
+    Documentation is connected to a post. Hence, the project model.
     """
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE

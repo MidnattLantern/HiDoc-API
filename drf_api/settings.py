@@ -88,6 +88,7 @@ project
 usr_comm
 watch_proj
 watch_art
+documentation
 """
 
 INSTALLED_APPS = [
@@ -115,6 +116,7 @@ INSTALLED_APPS = [
     'usr_comm',
     'watch_proj',
     'watch_art',
+    'documentation',
 ]
 SITE_ID = 1
 MIDDLEWARE = [

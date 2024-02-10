@@ -33,4 +33,5 @@ urlpatterns = [
     path('', include('usr_comm.urls')),
     path('', include('watch_proj.urls')),
     path('', include('watch_art.urls')),
+    path('', include('documentation.urls')),
 ]

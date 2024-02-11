@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class ArtAccount(models.Model):
     """
-    id is automatically generated with Big Auto
+    id generated with Big Auto
     """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,9 +21,11 @@ class ArtAccount(models.Model):
 
     def __str__(self):
         return f"{self.owner}'s account"
-    
+
+
 def create_account(sender, instance, created, **kwargs):
     if created:
         ArtAccount.objects.create(owner=instance)
+
 
 post_save.connect(create_account, sender=User)

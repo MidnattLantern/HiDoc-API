@@ -5,7 +5,7 @@ from project.models import Project
 
 class UserComment(models.Model):
     """
-    id is automatically generated with Big Auto.
+    id generated with Big Auto.
     User comment connected to a project.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -32,7 +32,6 @@ class Documentation(models.Model):
         blank=True,
         )
 
-
     class Meta:
         ordering = ['created_at']
 

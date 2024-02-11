@@ -5,14 +5,15 @@ from .models import WatchProject
 
 class WatchProjectSerializer(serializers.ModelSerializer):
     """
-    Obligatory docstring
+    serializer for watch project
+    referenced from Code Institute Moments project
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = WatchProject
-        fields = ['id', 'created_at', 'owner', 'project',]
-    
+        fields = ['id', 'created_at', 'owner', 'project']
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)

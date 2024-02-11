@@ -5,13 +5,13 @@ from .models import WatchArtist
 
 class WatchArtistSerializer(serializers.ModelSerializer):
     """
-    A couple things were left out from the tutorial.
+    Serializer for the future featre watch artist
     """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = WatchArtist
-        fields = ['id', 'created_at', 'owner', 'watched',]
+        fields = ['id', 'created_at', 'owner', 'watched']
 
     def create(self, validated_data):
         try:

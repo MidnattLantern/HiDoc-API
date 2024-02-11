@@ -42,7 +42,7 @@ class ProjectDetailViewTests(APITestCase):
             owner=testuser2, project_title='frying',
             project_description='how to make anything crispy'
         )
-    
+
     def test_can_retrieve_valid_id(self):
         response = self.client.get('/projects/1/')
         self.assertEqual(response.data['project_title'], 'fruitsallad')

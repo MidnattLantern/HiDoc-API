@@ -7,8 +7,13 @@ from .serializers import UserCommentSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
 
 
-#plural user comments
 class UserCommentList(APIView):
+    """
+    Plural user comments
+    Unused feature.
+    if User Comments will be used as a future feature, it
+    should be transitioned to generic views.
+    """
     serializer_class = UserCommentSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
@@ -21,7 +26,7 @@ class UserCommentList(APIView):
             usercomments, many=True, context={'request': request}
         )
         return Response(serializer.data)
-    
+
     def post(self, request):
         serializer = UserCommentSerializer(
             data=request.data, context={'request': request}
@@ -36,8 +41,13 @@ class UserCommentList(APIView):
         )
 
 
-#singular user comments
 class UserCommentDetail(APIView):
+    """
+    Singular user comment
+    Unused feature.
+    if User Comments will be used as a future feature, it
+    should be transitioned to generic views.
+    """
     serializer_class = UserCommentSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = UserComment.objects.all()
@@ -49,14 +59,14 @@ class UserCommentDetail(APIView):
             return usercomment
         except UserComment.DoesNotExist:
             raise Http404
-    
+
     def get(self, request, pk):
         usercomment = self.get_object(pk)
         serializer = UserCommentSerializer(
             usercomment, context={'request': request}
         )
         return Response(serializer.data)
-    
+
     def put(self, request, pk):
         usercomment = self.get_object(pk)
         serializer = UserCommentSerializer(
@@ -66,7 +76,7 @@ class UserCommentDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
-    
+
     def delete(self, request, pk):
         usercomment = self.get_object(pk)
         usercomment.delete()

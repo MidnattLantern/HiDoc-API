@@ -9,7 +9,6 @@ class ProjectSerializer(serializers.ModelSerializer):
     art_acc_id = serializers.ReadOnlyField(source='owner.profile.id')
     art_acc_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     watch_proj_id = serializers.SerializerMethodField()
-    # test
     watch_proj_count = serializers.ReadOnlyField()
 
     # limit to image size
@@ -40,7 +39,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             ).first()
             return watchproj.id if watchproj else None
         return None
-    
+
     class Meta:
         model = Project
         fields = [

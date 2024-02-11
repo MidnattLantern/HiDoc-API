@@ -7,7 +7,6 @@ class ArtAccountSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     watching_art_id = serializers.SerializerMethodField()
-    # test
     projects_count = serializers.ReadOnlyField()
     watchers_art_count = serializers.ReadOnlyField()
     watching_art_count = serializers.ReadOnlyField()
@@ -22,14 +21,12 @@ class ArtAccountSerializer(serializers.ModelSerializer):
             watching_artist = WatchArtist.objects.filter(
                 owner=user, watched=obj.owner
             ).first()
-#            print("watching:", watching_artist)
             return watching_artist.id if watching_artist else None
         return None
 
     class Meta:
         model = ArtAccount
         fields = [
-            # id is created automatically
             'id', 'owner', 'created_at', 'updated_at',
             'name', 'content', 'image', 'is_owner',
             'watching_art_id',

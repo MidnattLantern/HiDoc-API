@@ -19,7 +19,7 @@ class WatchProject(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['owner', 'project',]
+        unique_together = ['owner', 'project']
 
     def __str__(self):
         return f'{self.owner} {self.project}'

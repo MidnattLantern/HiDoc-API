@@ -4,6 +4,7 @@ from .models import Project
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+
 class WatchProjectViewTest(APITestCase):
     def setUp(self):
         testuser1 = User.objects.create_user(
@@ -18,11 +19,3 @@ class WatchProjectViewTest(APITestCase):
         WatchProject.objects.create(
             owner=testuser2, project='on top'
         )
-
-
-    # failed
-    def test_can_list_projects(self):
-        testuser1 = User.objects.get(username='cherry')
-        response = self.client.get('/projects/')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-

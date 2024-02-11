@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
     """
-    id is automatically generated with Big Auto.
-    Conntected to an artist.
+    id generated with Big Auto.
+    Conntected to an artist account.
     """
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE
@@ -31,8 +31,8 @@ class Project(models.Model):
         blank=True,
         )
 
-        
     class Meta:
         ordering = ['-created_at']
+
     def __str__(self):
         return f'{self.id} {self.project_title}'

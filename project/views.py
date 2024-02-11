@@ -28,17 +28,16 @@ class ProjectList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        # projects appearing in watch project list
+        # in frontend: projects appearing in "watch project" page
         'watching_project__owner__artaccount',
-        # user projects
+        # in frontend: projects appearing in "my projects" page
         'owner__artaccount',
     ]
     search_fields = [
-#        'owner__username',
+        'owner__username',
         'project_title',
     ]
     ordering_fields = [
-#        'watch_project_count',
         'created_at',
         'updated_at',
     ]

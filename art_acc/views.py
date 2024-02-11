@@ -22,7 +22,7 @@ class ArtAccountList(generics.ListAPIView):
         ),
         watching_art_count=Count(
             'owner__watching_artist', disctinct=True
-        ),        
+        ),
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer
     filter_backends = [
@@ -31,10 +31,6 @@ class ArtAccountList(generics.ListAPIView):
     ]
     ordering_fields = [
             'projects_count',
-#            'watchers_art_count',
-#            'watching_art_count,',
-#            'owner__watching_artist__created_at',
-#            'owner__account_watched__created_at',
     ]
 
 
@@ -42,7 +38,6 @@ class ArtAccountDetail(generics.RetrieveAPIView):
     """
     Singular art account
     """
-    #serializer_class = ArtAccountSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = ArtAccount.objects.annotate(
         projects_count=Count(
@@ -53,6 +48,6 @@ class ArtAccountDetail(generics.RetrieveAPIView):
         ),
         watching_art_count=Count(
             'owner__watching_artist', disctinct=True
-        ),        
+        ),
     ).order_by('-created_at')
     serializer_class = ArtAccountSerializer

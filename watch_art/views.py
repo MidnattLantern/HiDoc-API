@@ -21,7 +21,7 @@ class WatchArtistList(APIView):
             watchartist, many=True, context={'request': request}
         )
         return Response(serializer.data)
-    
+
     def post(self, request):
         serializer = WatchArtistSerializer(
             data=request.data, context={'request': request}
@@ -34,7 +34,7 @@ class WatchArtistList(APIView):
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
-   
+
 
 # singular watch artist
 class WatchArtistDetail(APIView):
@@ -49,14 +49,14 @@ class WatchArtistDetail(APIView):
             return watchartist
         except WatchArtist.DoesNotExist:
             raise Http404
-    
+
     def get(self, request, pk):
         watchartist = self.get_object(pk)
         serializer = WatchArtistSerializer(
             watchartist, context={'request': request}
         )
         return Response(serializer.data)
-    
+
     def delete(self, request, pk):
         watchartist = self.get_object(pk)
         watchartist.delete()

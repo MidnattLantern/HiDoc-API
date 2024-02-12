@@ -13,12 +13,12 @@ Watch project:
 ---
 Can retrieve existing watch-projects.
 Can watch an existing project.
-If already watching a project, cannot submit again until unwatched.
+If already watching a project, cannot submit it again until it is unwatched.
 
 /watch-project/{id}
 ---
 Can retrieve a watching project.
-If authenticated, can unwatch project.
+If authenticated, can unwatch the project.
 
 
 Watch artist (unused/ future feature):
@@ -28,12 +28,12 @@ Watch artist (unused/ future feature):
 ---
 Can retrieve existing watch-artists.
 Can watch an artist.
-If aleady watching an artist, cannot submit again until unwatched.
+If already watching an artist, cannot submit it again until unwatched.
 
 /watch-artists/{id}
 ---
 Can retrieve an artist.
-If authenticated, can unwatch artist.
+If authenticated, can unwatch the artist.
 
 
 User comment (unused/ future feature):
@@ -47,7 +47,7 @@ Can create a comment.
 
 user-comments/{id}
 ---
-If owner, can edit and delete a comment.
+If the owner can edit and delete a comment.
 
 
 project:
@@ -56,19 +56,19 @@ project:
 /projects/
 ---
 Can retrieve all projects view.
-Can create new item with all fields empty, the image will default to a placeholder.
+Can create a new item with all fields empty, and the image will default to a placeholder.
 Can filter projects belonging to an artist account.
-Can filter watching projects uniqure to the signed in artist account.
-Can add Project Title, Project Description, Feature Poster, Deployed Link.
-If Deployed Link is invalid, a reject message will occur.
+Can filter watching projects unique to the signed-in artist account.
+Can add a Project Title, Project Description, Feature Poster, and Deployed Link.
+If the Deployed Link is invalid, a reject message will occur.
 
 /projects/{id}
 ---
-Can retrieve existing project id.
+Can retrieve existing project ID.
 If not authenticated, the only option is to retrieve data.
-If authenticated, can delete project item.
-If authenticated, can edit and save Project Title, Project Description, Feature Poster, Deployed Link.
-If Deployed Link is invalid, a reject message will occur.
+If authenticated, can delete the project item.
+If authenticated, can edit and save Project Title, Project Description, Feature Poster, and Deployed Link.
+If the Deployed Link is invalid, a reject message will occur.
 ! If an image is too large, a reject message will occur.
 
 
@@ -78,13 +78,13 @@ Documentation:
 /documentations/ :
 ---
 Can retrieve every documentation.
-Can select a project and optionally add a title, paragraph and image, then add a documentation.
-Can filter by a project and see documentations belonging to that project.
+Can select a project and optionally add a title, paragraph and image, then add documentation.
+Can filter by a project and see documentation belonging to that project.
 
 /documentations/{id} :
 ---
-Can delete a documentation the user own.
-Can edit a documentatino the user own.
+Can delete documentation the user owns.
+Can edit documentation the user owns.
 
 
 Artist account:
@@ -96,4 +96,4 @@ Can retrieve all the artist accounts on API.
 
 /art-accounts/{id}
 ---
-Can retrieve detail of one artist account.
+Can retrieve details of one artist account.

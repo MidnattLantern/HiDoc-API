@@ -4,6 +4,11 @@ HIdoc-API is a Django REST Framework ("DRF") Application Programming Interface (
 
 The setup followed a step-by-step guide created by Code Institute. Source: https://docs.google.com/document/d/1LCLxWhmW_4VTE4GXsnHgmPUwSPKNT4KyMxSH8agbVqU/edit#heading=h.mpopj7v69qqn
 
+Frontend repository: https://github.com/MidnattLantern/hidoc.git
+
+
+Setup
+===
 
 Django and Rest:
 ---
@@ -78,6 +83,10 @@ The filter will be used in the front end when browsing through user projects and
 - In terminal:
 `pip3 install django-filter` (without an S at the end)
 - Add `django-filters` to installed apps (with an S at the end)
+
+
+Deployment
+===
 
 Deployment (ElephantSQL)
 ---
@@ -182,14 +191,13 @@ For optimal maintainability, each component is sliced into many smaller pieces, 
 
 serializers.py
 ---
-Serializers convert data between JSON and Python
+Serializers convert data between JSON and Python.
 
 
 permissions.py
 ---
 Stored inside drf_api, this file prevents non-owners from editing other's information.
 permissions.py import `permissions`, to make sure only the owner can make edits to their properties.
-
 
 env.py:
 ---
@@ -264,6 +272,8 @@ Documentation
 - Technically, any artist COULD document another artist's project. This, obviously is restricted in the front end, where only the owner of a project can access this feature.
 
 
+Testing
+===
 
 Run server:
 ---
@@ -296,6 +306,106 @@ Dependencies
 In the terminal, run:
 `python3 manage.py test`
 - Manual testing performed inside project > tests.py
+The following can also be found inside manual testing.md
+tested the following features manually
+
+authentication
+---
+Can sign in to a superuser account.
+Can sign out from a superuser account.
+
+
+Watch project:
+===
+
+/watch-project/
+---
+Can retrieve existing watch-projects.
+Can watch an existing project.
+If already watching a project, cannot submit it again until it is unwatched.
+
+/watch-project/{id}
+---
+Can retrieve a watching project.
+If authenticated, can unwatch the project.
+
+
+Watch artist (unused/ future feature):
+===
+
+/watch-artists/
+---
+Can retrieve existing watch-artists.
+Can watch an artist.
+If already watching an artist, cannot submit it again until unwatched.
+
+/watch-artists/{id}
+---
+Can retrieve an artist.
+If authenticated, can unwatch the artist.
+
+
+User comment (unused/ future feature):
+===
+
+/user-comments/ 
+---
+Can retrieve all the comments on the API.
+Can create a comment.
+! Cannot filter to a project.
+
+user-comments/{id}
+---
+If the owner can edit and delete a comment.
+
+
+project:
+===
+
+/projects/
+---
+Can retrieve all projects view.
+Can create a new item with all fields empty, and the image will default to a placeholder.
+Can filter projects belonging to an artist account.
+Can filter watching projects unique to the signed-in artist account.
+Can add a Project Title, Project Description, Feature Poster, and Deployed Link.
+If the Deployed Link is invalid, a reject message will occur.
+
+/projects/{id}
+---
+Can retrieve existing project ID.
+If not authenticated, the only option is to retrieve data.
+If authenticated, can delete the project item.
+If authenticated, can edit and save Project Title, Project Description, Feature Poster, and Deployed Link.
+If the Deployed Link is invalid, a reject message will occur.
+! If an image is too large, a reject message will occur.
+
+
+Documentation:
+===
+
+/documentations/ :
+---
+Can retrieve every documentation.
+Can select a project and optionally add a title, paragraph and image, then add documentation.
+Can filter by a project and see documentation belonging to that project.
+
+/documentations/{id} :
+---
+Can delete documentation the user owns.
+Can edit documentation the user owns.
+
+
+Artist account:
+===
+
+/art-accounts/
+---
+Can retrieve all the artist accounts on API.
+
+/art-accounts/{id}
+---
+Can retrieve details of one artist account.
 
 
 Struggles
@@ -303,9 +413,42 @@ Struggles
 - In case of a "Bad Request 400" error in Heroku deployment, the Heroku link is probably not properly added to the allowed host list. Deployment with Debug = True will reveal precisely how the allowed host link should be written.
 
 
-Unsolved:
----
-- The individual view for artist accounts cannot show a counter for projects, watching, or being watched.
+Validation
+===
+
+Following can also be found inside validation.md
+
+Validated using https://pep8ci.herokuapp.com/ 
+Following files have been validated:
+watch_proj > views.py
+watch_proj > urls.py
+watch_proj > tests.py
+watch_proj > serializers.py
+watch_proj > models.py
+watch_art > views.py
+watch_art > urls.py
+watch_art > serializers.py
+watch_art > models.py
+usr_comm > views.py
+usr_comm > urls.py
+usr_comm > serializers.py
+ust_comm > models.py
+project > views.py
+project > urls.py
+project > tests.py
+project > serializers.py
+project > models.py
+drf_api > views.py
+drf_api > urls.py
+drf_api > serializers.py
+documentation > views.py
+documentation > urls.py
+documentation > serializers.py
+documentation > models.py
+documentation > views.py
+documentation > urls.py
+documentation > serializers.py
+documentation > models.py
 
 
 Credits:

@@ -1,4 +1,4 @@
-Validated using https://pep8ci.herokuapp.com/#
+Validated using https://pep8ci.herokuapp.com/ 
 Following files have been validated:
 watch_proj > views.py
 watch_proj > urls.py

@@ -47,7 +47,7 @@ JWT token:
 - In terminal:
 `pip3 install dj-rest-auth==2.1.9`
 - In settings.py, add in the installed apps:
-`est_framework.authtoken`
+`rest_framework.authtoken`
 `dj_rest_aut`
 - in urls.py, add the link:
 `path('dj-rest-auth/', include('dj_rest_auth.urls'))`
@@ -96,89 +96,90 @@ ElephantSQL: The HiDoc API is set up to store data on ElephantSQL. These are the
 https://www.elephantsql.com/
 
 - On the dashboard, click on "Create new instance" at the top right corner,
-(API-deployment-1)
+![API-deployment-1](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-1.png)
 
 - The name given was "HiDoc-API", the plan for now remains as "tiny turtle", then click "Select Region" at the bottom right corner,
-(API-deployment-2)
+![API-deployment-2](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-2.png)
 
 - The region set for HiDoc is Stockholm. Click "Review",
-(API-deployment-3)
+![API-deployment-3](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-3.png)
 
 - Click "Create Instance in “the bottom right corner,
-(API-deployment-4)
+![API-deployment-4](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-4.png)
 
 - On the dashboard, click the name for HiDoc-API,
-(API-deployment-5)
+![API-deployment-5](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-5.png)
 
 - There's a button that copies the URL link.
-(API-deployment-6)
+![API-deployment-6](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-6.png)
 
 Heroku: HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
 - The website for Heroku is below, create an account if you haven’t already:
 https://www.heroku.com/home
 
 - On the dashboard, click "New", then "Create new app" at the top right corner,
-(API-deployment-7)
+![API-deployment-7](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-7.png)
 
 - give-it-a-name-like-this, choose Europe, then click "create app",
-(API-deployment-8)
+![API-deployment-8](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-8.png)
 
 - Inside the app, click "settings" at the nav bar, then "reveal config vars",
-(API-deployment-9)
+![API-deployment-9](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-9.png)
 
 - Add the key "DATABASE_URL", and the value is what PostgreSQL copied from the copy URL step earlier. The value should begin with "postgres:/",
-(API-deployment-10)
+![API-deployment-10](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-10.png)
 
 IDE: These are the steps taken in the IDE:
-- Create a `Procfile` in the root directory, add the following inside that file:
+- Create a `Procfile` in the root directory, and add the following inside that file:
 `
 release: python3 manage.py makemigrations && python3 manage.py migrate
 web: gunicorn drf_api.wsgi
 `
-(API-deployment-procfile)
+![API-deployment-procfile](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-procfile.png)
 
 - Install psycopg3 in the terminal:
 ` pip3 install dj_database_url==0.5.0 psycopg2`
 
 - Inside settings.py, underneath `import os`, import:
 `import dj_database_url`
-(API-deployment-13)
+![API-deployment-13](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-13.png)
 
 - There was a block that needed to be replaced, please find `ref-1: updating database` in settings.py to see what that replacement looks like. This block will connect to ElephantSQL.
-(API-deployment-12)
+![API-deployment-12](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-12.png)
 
 ElephantSQL:
 - In the database, click "browser",
-(API-deployment-13)
+![API-deployment-13](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-13.png)
 
 - Click "Table queries", scroll down to "auth_user" (may have info within parentheses),
-(API-deployment-14)
+![API-deployment-14](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-14.png)
 
 - Click execute,
-(API-deployment-15)
+![API-deployment-15](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-15.png)
 
 IDE: following steps:
 - Install Gunicorn Django Cors headers. In the terminal, run:
 `pip3 install gunicorn django-cors-headers`
 
 - Add a profcile, so that the API can be read by Heroku.
-(API-deployment-16)
+![API-deployment-16](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-16.png)
 
 - Add the URL for Heroku to the list of allowed hosts inside settings.py,
 
 - Add corsheaders to installed apps,
-(API-deployment-17)
+![API-deployment-17](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-17.png)
 
 - Add to the top of the middleware list:
 `'corsheaders.middleware.CorsMiddleware',`,
-(API-deployment-18)
+![API-deployment-18](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-18.png)
 
 - Added client origin block, please see `ref-2: client origin` in settings.py, this helps with communication between the backend, front end, and cookies.
-(API-deployment-19)
+![API-deployment-19](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-19.png)
 
 - add this line underneath the other JWT_AUTH:
 `JWT_AUTH_SAMESITE = 'None'`,
-(API-deployment-20)
+![API-deployment-20](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-20.png)
+
 
 - Change DEBUG to:
 `'DEV' in os.environ`
@@ -191,28 +192,26 @@ Heroku: following steps:
 Key: SECRET_KEY, Value: anything of choice,
 Key: CLOUDINARY_URL, Value: the Cloudinary URL used to host images,
 Key: DISABLE_COLLECTSTATIC, Value: 1,
-(API-deployment-21)
+![API-deployment-21](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-21.png)
 
 - Click deploy in the navbar, Github as the deployment method, search for the repository name, and then deploy.
-(API-deployment-22)
-(API-deployment-23)
+![API-deployment-22](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-22.png)
+![API-deployment-23](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-23.png)
 
 - HiDoc is being deployed manually.
 - Since this API will be used for a separate front-end app, inside config vars, add this:
 Key: "ALLOWED_HOST", value: the link to the Heroku app.
-(API-deployment-24)
+![API-deployment-24](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-24.png)
 
 IDE: following steps:
 replace the Heroku app in the allowed host with:
 `os.environ.get('ALLOWED_HOST'),` This shouldn't result in a 400 error.
-(API-deployment-25)
-
-
+![API-deployment-25](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-25.png)
 
 Whitenoise:
 ---
 During deployment for Heroku, the API may look different. Although its function isn't lost, it may be nice to have the API look nice when you visit. Whitenoise attempted to fix that.
-whitnoise `pip3 install whitenoise`
+whitnoise `pip3 install whitenoise`.
 
 
 Agile:
@@ -471,10 +470,10 @@ Struggles
 Validation
 ===
 
-Following can also be found inside validation.md
+The following can also be found inside validation.md
 
 Validated using https://pep8ci.herokuapp.com/ 
-Following files have been validated:
+The following files have been validated:
 watch_proj > views.py
 watch_proj > urls.py
 watch_proj > tests.py

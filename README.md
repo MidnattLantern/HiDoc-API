@@ -88,71 +88,126 @@ The filter will be used in the front end when browsing through user projects and
 Deployment
 ===
 
-Deployment (ElephantSQL)
----
-1. HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:
+There will be some jumping back and forward between ElephantSQL, Heroku, and IDE during the process of deployment.
+
+
+ElephantSQL: The HiDoc API is set up to store data on ElephantSQL. These are the steps taken for HiDoc API:
+- The website for ElephantSQL is below, create an account if you haven’t already:
+https://www.elephantsql.com/
+
 - On the dashboard, click on "Create new instance" at the top right corner,
-- The name given was "HiDoc-API", the plan for now remains as "tiny turtle", then click "Select Region",
+(API-deployment-1)
+
+- The name given was "HiDoc-API", the plan for now remains as "tiny turtle", then click "Select Region" at the bottom right corner,
+(API-deployment-2)
+
 - The region set for HiDoc is Stockholm. Click "Review",
-- Click "Create Instance",
+(API-deployment-3)
+
+- Click "Create Instance in “the bottom right corner,
+(API-deployment-4)
+
 - On the dashboard, click the name for HiDoc-API,
+(API-deployment-5)
+
 - There's a button that copies the URL link.
-- From here, move on to Deployment (Heroku) from step 2.
-4. The following steps should be taken after steps taken in Heroku and the IDE.
-- In the database, click "browser",
-- Click "Table queries", scroll down to "auth_user" (may have info within parentheses),
-- Click execute,
-- From here, move on to Deployment (IDE) from step 5.
+(API-deployment-6)
 
+Heroku: HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
+- The website for Heroku is below, create an account if you haven’t already:
+https://www.heroku.com/home
 
-Deployment (Heroku)
----
-2. HiDoc API is hosted by Heroku. These are the steps taken for HiDoc API:
 - On the dashboard, click "New", then "Create new app" at the top right corner,
-- give-it-a-name-like-this, then click "create app",
+(API-deployment-7)
+
+- give-it-a-name-like-this, choose Europe, then click "create app",
+(API-deployment-8)
+
 - Inside the app, click "settings" at the nav bar, then "reveal config vars",
+(API-deployment-9)
+
 - Add the key "DATABASE_URL", and the value is what PostgreSQL copied from the copy URL step earlier. The value should begin with "postgres:/",
-- From here, move on to Deployment (IDE) from step 3.
-6. The following steps should be taken after steps taken in IDE.
+(API-deployment-10)
+
+IDE: These are the steps taken in the IDE:
+- Create a `Procfile` in the root directory, add the following inside that file:
+`
+release: python3 manage.py makemigrations && python3 manage.py migrate
+web: gunicorn drf_api.wsgi
+`
+(API-deployment-procfile)
+
+- Install psycopg3 in the terminal:
+` pip3 install dj_database_url==0.5.0 psycopg2`
+
+- Inside settings.py, underneath `import os`, import:
+`import dj_database_url`
+(API-deployment-13)
+
+- There was a block that needed to be replaced, please find `ref-1: updating database` in settings.py to see what that replacement looks like. This block will connect to ElephantSQL.
+(API-deployment-12)
+
+ElephantSQL:
+- In the database, click "browser",
+(API-deployment-13)
+
+- Click "Table queries", scroll down to "auth_user" (may have info within parentheses),
+(API-deployment-14)
+
+- Click execute,
+(API-deployment-15)
+
+IDE: following steps:
+- Install Gunicorn Django Cors headers. In the terminal, run:
+`pip3 install gunicorn django-cors-headers`
+
+- Add a profcile, so that the API can be read by Heroku.
+(API-deployment-16)
+
+- Add the URL for Heroku to the list of allowed hosts inside settings.py,
+
+- Add corsheaders to installed apps,
+(API-deployment-17)
+
+- Add to the top of the middleware list:
+`'corsheaders.middleware.CorsMiddleware',`,
+(API-deployment-18)
+
+- Added client origin block, please see `ref-2: client origin` in settings.py, this helps with communication between the backend, front end, and cookies.
+(API-deployment-19)
+
+- add this line underneath the other JWT_AUTH:
+`JWT_AUTH_SAMESITE = 'None'`,
+(API-deployment-20)
+
+- Change DEBUG to:
+`'DEV' in os.environ`
+
+- Reminder: freeze, in terminal:
+`pip freeze --local > requirements.txt`
+
+Heroku: following steps:
 - Add these to the config vars:
-Key: SECRET_KEY, Value: anything,
+Key: SECRET_KEY, Value: anything of choice,
 Key: CLOUDINARY_URL, Value: the Cloudinary URL used to host images,
 Key: DISABLE_COLLECTSTATIC, Value: 1,
+(API-deployment-21)
+
 - Click deploy in the navbar, Github as the deployment method, search for the repository name, and then deploy.
+(API-deployment-22)
+(API-deployment-23)
+
 - HiDoc is being deployed manually.
 - Since this API will be used for a separate front-end app, inside config vars, add this:
 Key: "ALLOWED_HOST", value: the link to the Heroku app.
-- Then replace the Heroku app in the allowed host with:
+(API-deployment-24)
+
+IDE: following steps:
+replace the Heroku app in the allowed host with:
 `os.environ.get('ALLOWED_HOST'),` This shouldn't result in a 400 error.
-- 
+(API-deployment-25)
 
 
-
-Deployment (IDE)
----
-3. These are steps taken in the IDE:
-- In terminal:
-` pip3 install dj_database_url==0.5.0 psycopg2`
-- Inside settings.py, underneath `import os`, import:
-`import dj_database_url`
-- There was a block that needed to be replaced, please find `ref-1: updating database` in settings.py to see what that replacement looks like. This block will connect to ElephantSQL.
-- From here, move on to Deployment (ElephantSQL) step 4.
-5. The following steps should be taken after the steps taken in ElephantSQL.
-- In the terminal, run:
-`pip3 install gunicorn django-cors-headers`
-- Add a profcile, so that Heroku can read it.
-- Add the URL for Heroku to the list of allowed hosts inside settings.py,
-- Add corsheaders to installed apps,
-- Add to the top of the middleware list:
-`'corsheaders.middleware.CorsMiddleware',`,
-- Added client origin block, please see `ref-2: client origin` in settings.py, this helps with communication between the backend and frontend. And cookies.
-- add this underneath the other JWT_AUTH:
-`JWT_AUTH_SAMESITE = 'None'`,
-- Change DEBUG to:
-`'DEV' in os.environ`
-- Reminder: freeze, in terminal:
-`pip freeze --local > requirements.txt`
-- from here, move on to Deployment (Heroku) from step 6.
 
 Whitenoise:
 ---

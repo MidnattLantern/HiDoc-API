@@ -221,11 +221,6 @@ Agile:
 - To ensure that all the features were confident during development, some features are referenced and follow a similar structure to Moments. It's worth pointing out that although there are many parallels, HiDoc didn't copy-paste its reference.
 - Some features, such as search projects or artists were left behind in the first phase. HiDoc is functional without those features and had to be compromised due to time constrain.
 
-large images
----
-- The code suggests that there's a limit to the size of an image upload. As of writing this, large images pass the validation code. Passing large images could be a concern for the wallet if HiDoc were to become popular, but for my deadline, I have more important things to work on.
-- It's worth putting a pin on this when HiDoc is maintained in the future. It's not free to store millions of images larger than 1 MB on Cloudinary.
-
 
 Apps
 ===

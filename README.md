@@ -130,12 +130,14 @@ https://www.heroku.com/home
 ![API-deployment-10](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-10.png)
 
 IDE: These are the steps taken in the IDE:
-- Create a `Procfile` in the root directory, and add the following inside that file:
+
+- Create a `Procfile` in the root directory, so that the API can be read by Heroku. Then add the following inside that file:
 `
 release: python3 manage.py makemigrations && python3 manage.py migrate
 web: gunicorn drf_api.wsgi
 `
 ![API-deployment-procfile](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-procfile.png)
+![API-deployment-16](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-16.png)
 
 - Install psycopg3 in the terminal:
 ` pip3 install dj_database_url==0.5.0 psycopg2`
@@ -161,8 +163,7 @@ IDE: following steps:
 - Install Gunicorn Django Cors headers. In the terminal, run:
 `pip3 install gunicorn django-cors-headers`
 
-- Add a profcile, so that the API can be read by Heroku.
-![API-deployment-16](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-16.png)
+
 
 - Add the URL for Heroku to the list of allowed hosts inside settings.py,
 

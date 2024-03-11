@@ -144,7 +144,7 @@ web: gunicorn drf_api.wsgi
 
 - Inside settings.py, underneath `import os`, import:
 `import dj_database_url`
-![API-deployment-13](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-13.png)
+![API-deployment-11](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-11.png)
 
 - There was a block that needed to be replaced, please find `ref-1: updating database` in settings.py to see what that replacement looks like. This block will connect to ElephantSQL.
 ![API-deployment-12](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-12.png)

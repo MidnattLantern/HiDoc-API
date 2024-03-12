@@ -163,8 +163,6 @@ IDE: following steps:
 - Install Gunicorn Django Cors headers. In the terminal, run:
 `pip3 install gunicorn django-cors-headers`
 
-
-
 - Add the URL for Heroku to the list of allowed hosts inside settings.py,
 
 - Add corsheaders to installed apps,
@@ -180,7 +178,6 @@ IDE: following steps:
 - add this line underneath the other JWT_AUTH:
 `JWT_AUTH_SAMESITE = 'None'`,
 ![API-deployment-20](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/api_heroku_deployment/api-deployment-20.png)
-
 
 - Change DEBUG to:
 `'DEV' in os.environ`
@@ -356,28 +353,47 @@ Dependencies
 In the terminal, run:
 `python3 manage.py test`
 - Manual testing performed inside project > tests.py
-The following can also be found inside manual testing.md
+The following can also be found inside manual testing.md with screenshots.
 tested the following features manually
 
+
 authentication
+===
+Can sign in to a superuser account:
 ---
-Can sign in to a superuser account.
+- This was tested by creating a superuser. Run in terminal:
+`python3 manage.py createsuperuser` and create a user.
+- Run the server. The devloplemt Rest framework has a sign in button at the top right. Sign in with the credentials.
+
 Can sign out from a superuser account.
+---
+The development Rest framework sign in button is replaced with a dropdown menu if the developer is already signed in.
 
 
 Watch project:
 ===
 
-/watch-project/
----
 Can retrieve existing watch-projects.
-Can watch an existing project.
-If already watching a project, cannot submit it again until it is unwatched.
-
-/watch-project/{id}
 ---
+- by adding `/watch-project/` to the url, the development Rest framework will render data of watching projects.
+
+Can watch an existing project.
+---
+- When authenticated, scrolling down to the bottom will reveal a drop down menu of all projects you can watch.
+- Picking one and click "POST" will make a post request.
+
+If already watching a project, cannot submit it again until it is unwatched.
+- The dropdown menu show all projects, including projects the user is already watching. By picking the same project twice, there will be a message displaying "detail": "risk of project 'double-watching'"
+
+
 Can retrieve a watching project.
+---
+- By adding `/watch-project/{id}` to the url, with an existing index in place of {id}, in this test case 17, a single watching project is rendered.
+
 If authenticated, can unwatch the project.
+---
+- The test user in this test case "owns" the url `/watch-projects/17` but not `/watch-projects/16`.
+- Inside `/watch-projects/17` a delete button is present, but absent in /16.
 
 
 Watch artist (unused/ future feature):
@@ -412,50 +428,97 @@ If the owner can edit and delete a comment.
 project:
 ===
 
-/projects/
----
 Can retrieve all projects view.
-Can create a new item with all fields empty, and the image will default to a placeholder.
-Can filter projects belonging to an artist account.
-Can filter watching projects unique to the signed-in artist account.
-Can add a Project Title, Project Description, Feature Poster, and Deployed Link.
-If the Deployed Link is invalid, a reject message will occur.
-
-/projects/{id}
 ---
-Can retrieve existing project ID.
-If not authenticated, the only option is to retrieve data.
-If authenticated, can delete the project item.
-If authenticated, can edit and save Project Title, Project Description, Feature Poster, and Deployed Link.
+- By adding `/projects/` to the URL, a list of all existing projects are rendered.
+
+Can create a new item with all fields empty, and the image will default to a placeholder.
+---
+- Being authenticated, and scrolling down to the bottom, there's a form field.
+- Clicking "POST" will create a new project item according to given data.
+
+Can filter projects belonging to an artist account.
+---
+- Inside the url `/projects/`, there's a "Filters" button next to "OPTIONS".
+- Clicking the Filters button reveal a window with filtering options. Field filters have a top and a bottom dropdown menu.
+- The bottom dropdown menu display all test superusers. Picking one superuser, then clicking Submit will render all projects only belonging to that test superuser.
+
+Can filter watching projects unique to the signed-in artist account.
+---
+- This is tested the same way as for testing proejcts belonging to an artist, but by making a pick from the top dropdown field instead.
+
+Can add a Project Title, Project Description, Feature Poster, and Deployed Link.
+---
+- This can be tested the same way as creating a new project with empty fields, but by filling all the forms instead of leaving them empty.
+
 If the Deployed Link is invalid, a reject message will occur.
-! If an image is too large, a reject message will occur.
+---
+- This can be tested by entering a regular string, such as "youtube"
+
+Can retrieve existing project ID.
+---
+- This can be tested by adding `/projects/{id}` to the URL, but with a valid index number in the place of {id}, such as 19.
+- The page will render a single project.
+![projects-render-single](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/manual_test_api/projects-render-single.png)
+
+If not authenticated, the only option is to retrieve data.
+---
+- Unless the test superuser isn't the owner, it's neccessary to sign out, by clicking on the username at the top right, then sign out.
+
+If authenticated, can delete the project item.
+---
+- In the example image, the signed in superuser is the owner of project 19, therefore the delete button is present.
+
+If authenticated, can edit and save Project Title, Project Description, Feature Poster, and Deployed Link.
+---
+- For project example 19, the test superuser owning project 19 has to be signed in.
+- At the bottom of the page, and at url `/projects/19/`, a form field is present if the test superuser is signed in.
+- When editing the forms and clicking "PUT", the project item will save its changes.
 
 
 Documentation:
 ===
 
-/documentations/ :
----
 Can retrieve every documentation.
-Can select a project and optionally add a title, paragraph and image, then add documentation.
-Can filter by a project and see documentation belonging to that project.
-
-/documentations/{id} :
 ---
-Can delete documentation the user owns.
-Can edit documentation the user owns.
+- By adding `/documentations/` to the URL, the api will render all documentations.
+
+Can select a project and optionally add a title, paragraph and image, then add documentation.
+---
+- By signing in to a test superuser, the bottom will display a form field.
+- The drop down menu render all projects, in this test example, project 20.
+- When clicking "POST", a new item is created according to the filled forms.
+
+Can filter by a project and see documentation belonging to that project.
+---
+- Inside the `/documentaitons/` URL, there's a Filters button in the corner.
+- The Filters button reveal a window with a dropdown menu that reveal all the projects.
+- In this example, picking project 20 will render documentaitons belonging to that project.
+
+Can retrieve a single documentation item
+---
+- By adding `/documentations/{id}` with an index number in the place of {id}, in this example 5, a single documentation item is rendered.
+![]()
+
+Can edit and delete documentation the user owns.
+---
+- In this example, the signed in superuser is the owner for documentation item 5. At the bottom, a delete button is present, as well as an edit form at the bottom.
+- When editing the fields, then clicking "PUT", the documentation item is updated according to the updated forms.
+- Clicking the Delete button, and confirming the decision deleted documentation item 5.
+- The signed in superuser in this test case is not the owner for documentaiton item 4. The delete and edit form are absent.
 
 
 Artist account:
 ===
 
-/art-accounts/
----
 Can retrieve all the artist accounts on API.
-
-/art-accounts/{id}
 ---
+- Adding `/art-accounts/` to the url will render all artist accounts.
+
 Can retrieve details of one artist account.
+---
+- Adding `/art-accounts/{id}` to the url with a valid index number such as 1 in the place of {id} will render a single artist account.
+
 
 
 Struggles

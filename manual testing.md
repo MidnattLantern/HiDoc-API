@@ -23,7 +23,7 @@ Watch project:
 Can retrieve existing watch-projects.
 ---
 - by adding `/watch-project/` to the url, the development Rest framework will render data of watching projects.
-![watch-project-retrieve]()
+![watch-project-retrieve](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/manual_test_api/watch-project-retrieve.png)
 
 Can watch an existing project.
 ---
@@ -39,7 +39,7 @@ If already watching a project, cannot submit it again until it is unwatched.
 Can retrieve a watching project.
 ---
 - By adding `/watch-project/{id}` to the url, with an existing index in place of {id}, in this test case 17, a single watching project is rendered.
-![watch-project-detail]()
+![watch-project-detail](https://raw.githubusercontent.com/MidnattLantern/HiDoc-API/main/readme_images/manual_test_api/watch-project-detail.png)
 
 If authenticated, can unwatch the project.
 ---

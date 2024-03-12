@@ -160,20 +160,41 @@ Can select a project and optionally add a title, paragraph and image, then add d
 ![documentation-created]()
 
 Can filter by a project and see documentation belonging to that project.
-
-/documentations/{id} :
 ---
-Can delete documentation the user owns.
-Can edit documentation the user owns.
+- Inside the `/documentaitons/` URL, there's a Filters button in the corner.
+- The Filters button reveal a window with a dropdown menu that reveal all the projects.
+- In this example, picking project 20 will render documentaitons belonging to that project.
+![documentation-filter-menu]()
+![documentation-filter]()
+
+
+Can retrieve a single documentation item
+---
+- By adding `/documentations/{id}` with an index number in the place of {id}, in this example 5, a single documentation item is rendered.
+![]()
+
+Can edit and delete documentation the user owns.
+---
+- In this example, the signed in superuser is the owner for documentation item 5. At the bottom, a delete button is present, as well as an edit form at the bottom.
+![documentation-owner]()
+- When editing the fields, then clicking "PUT", the documentation item is updated according to the updated forms.
+![documentation-editing]()
+![documentation-edited]()
+- Clicking the Delete button, and confirming the decision deleted documentation item 5.
+![documentation-deleted]()
+- The signed in superuser in this test case is not the owner for documentaiton item 4. The delete and edit form are absent.
+![documentation-not-owner]()
 
 
 Artist account:
 ===
 
-/art-accounts/
----
 Can retrieve all the artist accounts on API.
-
-/art-accounts/{id}
 ---
+- Adding `/art-accounts/` to the url will render all artist accounts.
+![artist-account-render]()
+
 Can retrieve details of one artist account.
+---
+- Adding `/art-accounts/{id}` to the url with a valid index number such as 1 in the place of {id} will render a single artist account.
+![artist-account-render-single]()

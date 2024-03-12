@@ -10,6 +10,15 @@ Frontend repository: https://github.com/MidnattLantern/hidoc.git
 Setup
 ===
 
+env.py
+---
+env.py is listed in .gitignore. If you have access to the Gitpod workspace, the file is available. This is a model for the env.py content:
+import os
+os.environ['CLOUDINARY_URL'] = (cloudinary link)
+os.environ['SECRET_KEY'] = (anything of choice)
+os.environ['DEV'] = '1'
+os.environ['DATABASE_URL'] = (postgreSQL)
+
 Django and Rest:
 ---
 In terminal:

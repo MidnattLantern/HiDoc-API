@@ -285,6 +285,7 @@ Artists account app:
 - The model for artist accounts follows a similar structure to Code Institute's Moments tutorial model for profiles.
 - Models use import of `User`, which enables the API to perceive individuals, i.e. differentiate user-A from user-B.
 - Models use the import of `Signals`, which is a part of making it possible to register new users from the front end.
+- The artist account app is used in the front-end to enable the creation of user profiles, and connect authenticated items to each account.
 
 
 Project app:
@@ -292,6 +293,7 @@ Project app:
 - The "project" model holds information about any user's project(s).
 - The project model follows a similar structure to Code Institute's Moments tutorial model for post.
 - The agile approach only includes a feature poster and description of the project. This is because the training reference doesn't include the more advanced features from the HiDoc user stories, and there's no certainty that they could be experimented with before the deadline.
+- The project app is used in the front-end to enable a user to create a project and edit or delete it.
 
 
 Comment app (unused):
@@ -306,6 +308,7 @@ Watch project:
 - When the user clicks Watch Project, that project will be listed inside their watch view, allowing the user to easily find projects they think are interesting to stay updated for.
 - There is a counter that shows how many users are watching the project.
 - Watching is a yes or no state. The serializer.py import `IntegrityError`, that's being used to prevent 'double-watching'. 
+- The watch project app is used in the front-end to enable a user to store projects they want to save.
 
 Watch artist (unused):
 ---
@@ -317,6 +320,7 @@ Documentation
 - The owner of a project can add content to, by the intention of HiDoc, document their process.
 - Documentation is related to the Project.
 - Technically, any artist COULD document another artist's project. This, obviously is restricted in the front end, where only the owner of a project can access this feature.
+- The documentation app is used in the front-end to enable a user to elaborate on their project.
 
 
 Testing
